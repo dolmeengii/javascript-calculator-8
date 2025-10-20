@@ -1,7 +1,8 @@
 const Calculator = {
     add(input) {
         if (input === "") return 0;
-        return Number(input);
+        const numbers = input.split(/,|:/).map(Number);
+        return numbers.reduce((sum, num) => sum + num, 0);
     },
 };
 
