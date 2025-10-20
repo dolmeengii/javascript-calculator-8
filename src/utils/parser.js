@@ -15,7 +15,17 @@ function parseNumbers(input) {
         expression = rest;
     }
 
-    return expression.split(delimiter).map(Number);
+    const numbers = expression.split(delimiter).map(Number);
+
+    if(numbers.some(num => isNaN(num))) {
+        throw new Error("[ERROR] 잘못된 입력입니다.");
+    }
+
+    if(numbers.some(num => num < 0)) {
+        throw new Error("[ERROR] 음수는 입력할 수 없습니다.");
+    }
+
+    return numbers;
 }
 
 export default parseNumbers;
